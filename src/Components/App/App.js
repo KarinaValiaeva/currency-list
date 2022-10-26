@@ -44,18 +44,20 @@ function App() {
       CbrApi.getYesterdayCurrency(getPrevDAte(i))
         .then((data) => {
           const newArr = Object.keys(data.Valute).map((item) => ({
-            date: data.Date,
+            date: data.Date.slice(0, 10),
             id: data.Valute[item].ID,
             code: data.Valute[item].CharCode,
             valute: data.Valute[item].Value.toFixed(2),
           }));
           const arr = newArr.find((item) => item.id === valute.id);
           dataArr.push(arr);
-          localStorage.setItem("valutesArr", JSON.stringify(dataArr));
+          localStorage.setItem("valutesArr", JSON.stringify(dataArr.sort()));
           setPrevValues(JSON.parse(localStorage.getItem("valutesArr")));
         })
-        .catch((res) => 
-          console.log(res)
+        .catch(
+          (res) =>
+            res.message === "Failed to fetch" &&
+            console.log(`Курс ЦБ РФ на дату ${getPrevDAte(i)} не установлен.`)
         );
     }
   }

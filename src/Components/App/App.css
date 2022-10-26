@@ -56,8 +56,6 @@
   background-color: rgb(167, 218, 219);
   color: #363838;
   text-align: center;
-  /* border-radius: 3px; */
-  /* padding: 3px; */
 }
 
 .currency-list__item:hover .currency-list__item-tooltip {

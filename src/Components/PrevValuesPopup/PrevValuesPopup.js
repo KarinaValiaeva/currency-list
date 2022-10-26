@@ -1,10 +1,6 @@
 import "./PrevValuesPopup.css";
 
 function PrevValuesPopup(props) {
-  function getDate(date) {
-    return date.slice(0, 10);
-  }
-
   return (
     <div className={`values-popup ${props.isOpen && "values-popup_opened"}`}>
       <div className="values-popup__container">
@@ -19,7 +15,7 @@ function PrevValuesPopup(props) {
         <ul className="values-popup__list">
           {props.prevValues.map((item, index) => (
             <li className="values-popup__list-item" key={index}>
-              <div>{getDate(item.date)}</div>
+              <div>{item.date}</div>
               <div>{item.valute}</div>
             </li>
           ))}
